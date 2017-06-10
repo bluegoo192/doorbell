@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/setFree', function(req, res, next) {
     if (typeof req.body.free === 'undefined' || req.body.free === null) {
+        req.send(JSON.stringify(req.body));
         res.send(400);
     } else {
         if (req.body.free === true) {
@@ -19,6 +20,7 @@ router.post('/setFree', function(req, res, next) {
             free = false;
             res.send(200);
         } else {
+            req.send(JSON.stringify(req.body));
             res.send(400);
         }
     }
